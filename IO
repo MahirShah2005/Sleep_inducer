@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<fstream>
+using namespace std;
+class Inmate{
+string name;
+int EarpodID;
+int ST[7];  //Sleep Time
+int Asleep;
+};
+class Dorm{
+    string name;
+    int mc;
+    int music;
+
+};
+void Read(string name)
+{
+ifstream file(name);
+
+if(!file){
+    cerr<<"File cannot be opened"<< endl;
+    exit(1);
+}
+string fline;
+while(getline(file,fline)){
+    string type;
+    file >> type;
+    cout << type;
+    }
+}
+
+
+
+
+int main()
+{   vector<Inmate> inmates;
+    vector<Dorm> dorms;
+    Read("input.txt");
+    return 0;
+}
+
