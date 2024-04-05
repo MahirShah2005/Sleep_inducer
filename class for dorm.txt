@@ -1,0 +1,29 @@
+class Dorm {
+private:
+    string name;
+    vector<string> music Channels;
+    unordered_map<string, queue<string>> musicPlaylist; // Channel -> Playlist
+    vector<Inmate*> inmates;
+
+public:
+    Dorm(string n, vector<string> channels) : name(n), music Channels(channels) {}
+
+    string getName() const {
+        return name;
+    }
+
+    vector<string> getMusic Channels() const {
+        return music Channels;
+    }
+
+    unordered_map<string, queue<string>> getMusicPlaylist() const {
+        return musicPlaylist;
+    }
+
+    vector<Inmate*> getInmates() const {
+        return inmates;
+    }
+
+    void addInmate(Inmate* inmate) {
+        inmates.push_back(inmate);
+    }
