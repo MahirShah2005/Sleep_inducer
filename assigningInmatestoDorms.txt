@@ -1,0 +1,15 @@
+assigningInmatestoDorms(vector<inmate>& inmates,vector<dorm>& dorms){
+   
+       int TotalInmates = inmates.size();
+       int Totaldorms = dorms.size();
+       int inmatesperdorm = TotaInmates/Totaldorms;
+       int remaininginmates = TotalInmates%Totaldorms;
+     
+       for(int i=0; i<TotalInmates; ++i)  {
+        int count = inmatesPerdorm + (i < remaininginmates ? 1 : 0);
+        
+        for (int k = 0; k < count; ++k)  {
+            dorms[i].addInmate(&inmates[j++]);
+        }
+       }
+    }
