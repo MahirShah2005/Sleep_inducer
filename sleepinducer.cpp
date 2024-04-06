@@ -1,0 +1,168 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<fstream>
+#include <sstream>
+#include<queue>
+#include<unordered_map>
+
+
+using namespace std;
+ class Inmate{
+   public:
+       
+       string name;
+       string earpodID;
+       vector<int> sleeptime;
+       int timetofallAsleep;
+       bool asleep;
+       
+    public:
+       
+       Inmate( string m, string id, vector<int> stime, int Time):
+       
+              name(m),
+              earpodID(id),
+              sleeptime(stime),
+              timetofallAsleep(Time),
+              asleep(false)   {}
+              
+       string inName() const {
+           
+             return name;
+       }
+       string getEarpodID() const {
+       
+             return earpodID;
+       }
+
+       vector<int> getSleeptime() const {
+           
+             return sleeptime;
+       }
+
+       int getTimeToFallAsleep() const {
+       
+             return timetofallAsleep;
+       }
+
+       bool giveAsleep() const {
+        
+             return asleep;
+       }
+
+       void setSleepstatus(bool status) {
+        
+             asleep = status;
+       }
+       
+ };      
+class Dorm {
+   
+public:
+ Dorm(){}
+    string name;
+    vector<string> channels;
+    unordered_map<string, queue<string>> musicPlaylist;
+    vector<Inmate*> inmates;
+
+public:
+   
+    Dorm(string n, vector<string> channels) : name(n), channels(channels) {}
+
+    string getName() const {
+        return name;
+    }
+
+    vector<string> getchannels() const {
+        return channels;
+    }
+
+    unordered_map<string, queue<string>> getMusicPlaylist() const {
+        return musicPlaylist;
+    }
+
+    vector<Inmate*> getInmates() const {
+        return inmates;
+    }
+
+    void addInmate(Inmate* inmate) {
+        inmates.push_back(inmate);
+    }
+};
+void Read(string name)
+{
+ifstream file(name);
+
+if(!file){
+    cerr<<"File cannot be opened"<< endl;
+    exit(1);
+}
+vector<Inmate> inmatesList;
+string fline;
+while (getline(file, fline)) {
+    istringstream iss(fline);
+
+    string type;
+    iss >> type;
+    cout << type << endl;
+    if (type == "Inmate:") {
+        
+        string name;
+        string earpodID;
+        vector<int> sleeptime(7);
+        int timetofallAsleep;
+        iss >> name >> earpodID;
+        for (int i = 0; i < 7; i++) {
+            iss >> sleeptime[i];
+        }
+        iss >> timetofallAsleep;
+        cout << "Name: " << name << endl;
+        cout << "Earpod ID: " << earpodID << endl;
+        cout << "Sleep time: ";
+        for (int i = 0; i < 7; i++) {
+            cout << sleeptime[i] << " ";
+        }
+        cout << endl;
+        cout << "Time to fall asleep: " << timetofallAsleep << endl;
+        Inmate newInmate(name,earpodID,sleeptime,timetofallAsleep);
+        inmatesList.push_back(newInmate);
+       
+    }
+
+
+    else if(type == "Dorm:")
+    {
+        vector<Dorm> dormsList;
+        string name;
+        int newchannels;
+         iss >> name;
+        iss >> newchannels;
+        Dorm newDorm;
+        newDorm.name= name;
+        cout << "Name: " << name << endl;
+        vector<string>channels(newchannels); 
+        for(int i=0;i<newchannels;i++)
+        {
+            iss >> channels[i];
+        } 
+       for(int i=0;i<newchannels;i++)
+        {
+            cout << channels[i]<<" ";
+        } 
+        
+        dormsList.push_back(newDorm);
+    }
+     }
+}
+
+
+
+
+int main()
+{   vector<Inmate> inmates;
+    vector<Dorm> Dorm;
+    Read("input.txt");
+    return 0;
+}
+
