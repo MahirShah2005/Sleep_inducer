@@ -103,14 +103,15 @@ public:
         return channels;
     }
 };
-void music(vector<Dorm>& dormslist);
-void assigningInmatestoDorms(vector<Inmate>& inmates,vector<Dorm>& dorms){
-int TotalInmates = inmates.size();
+void music(vector<Dorm>& dormslist); //Function declaration
+void assigningInmatestoDorms(vector<Inmate>& inmates,vector<Dorm>& dorms) //Function to assign Inmates to Dorm
+{
+int TotalInmates = inmates.size();  
 cout << "Number of Inmates "<< TotalInmates<<endl;
 int Totaldorms = dorms.size();
-       int inmatesperdorm = TotalInmates/Totaldorms;
+       int inmatesperdorm = TotalInmates/Totaldorms;    
        int remaininginmates = TotalInmates%Totaldorms;
-       int j=0;
+       int j=0; //for inmate
      
        for(int i=0; i<Totaldorms; ++i)  {
 
