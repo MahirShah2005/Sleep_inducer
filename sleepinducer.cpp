@@ -138,7 +138,7 @@ int Totaldorms = dorms.size();
     
 
     
-void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms) //Function to read inpur file
+void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms) //Function to read input txt file
 {
 ifstream file(name);
 
@@ -150,7 +150,7 @@ if(!file){
 
 string fline;
 while (getline(file, fline)) {
-    istringstream iss(fline);
+    istringstream iss(fline); // to extract information using '>>' operator using istringstream of 
 
     string type;
     iss >> type;
@@ -193,7 +193,7 @@ while (getline(file, fline)) {
 
      
 }
-void music(vector<Dorm>& dormslist)
+void music(vector<Dorm>& dormslist) 
 {
     int inmateindex = 0;
     for(Dorm& dorm : dormslist)
@@ -208,7 +208,7 @@ for(int i=0;i< dorm.getInmates().size();i++){
         const vector<string>& channels = dorm.getChannels();
         inmate->setChannel(channels[inmateindex % channels.size()]);
         cout << "Assigned " << inmate->getchannel() << " to Inmate " << inmate->inName() << endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep()));
+    std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep())); //to stop program to execute while music is playing
         inmate->setSleepstatus(true);
         cout<<inmate->inName()<<" fell asleep. After " <<inmate->timetofallAsleep <<" minutes. " <<endl <<"Deactivating earpod."<<endl;
          inmateindex++;
