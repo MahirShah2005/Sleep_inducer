@@ -139,7 +139,7 @@ int Totaldorms = dorms.size();
     
 
     
-void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms)
+void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms) //Function to read inpur file
 {
 ifstream file(name);
 
