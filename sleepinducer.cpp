@@ -95,7 +95,7 @@ public:
 void music(vector<Dorm>& dormslist);
 void assigningInmatestoDorms(vector<Inmate>& inmates,vector<Dorm>& dorms){
 int TotalInmates = inmates.size();
-cout << "Number of Inmates "<< TotalInmates;
+cout << "Number of Inmates "<< TotalInmates<<endl;
 int Totaldorms = dorms.size();
        int inmatesperdorm = TotalInmates/Totaldorms;
        int remaininginmates = TotalInmates%Totaldorms;
@@ -172,7 +172,7 @@ while (getline(file, fline)) {
         } 
        for(int i=0;i<newchannels;++i)
         {
-            cout << channels[i]<<" ";
+            cout << channels[i]<<" "<<endl;
         } 
         
         dorms.push_back(newDorm);
@@ -192,10 +192,10 @@ cout << "Number of inmates: " << dorm.getInmates().size() << endl;
 
 for(Inmate* inmate: dorm.getInmates()){
     if(!inmate -> giveAsleep()){
-        cout << "Playing music for inmates" << inmate->inName()<<endl;
+        cout << "Playing music for inmates " << inmate->inName()<<endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep()));
         inmate->setSleepstatus(true);
-        cout<<inmate->inName()<<"fell asleep. Deactivating earpod"<<endl;
+        cout<<inmate->inName()<<" fell asleep. Deactivating earpod"<<endl;
     }
 }
     }
