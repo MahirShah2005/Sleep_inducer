@@ -47,6 +47,5 @@ Inmate: Ruchika 047 11 11 11 11 11 11 11 20
 Inmate: Nisha 048 8 8 8 8 8 8 8 40
 Inmate: Tanisha 049 7 7 7 7 7 7 7 32
 Inmate: Unnati 050 9 9 9 9 9 9 9 5
-Dorm: Alpha 3 rock pop classical
 Dorm: Dorm1 3 Channel1 Channel2 Channel3
 Dorm: Dorm2 2 ChannelA ChannelB
