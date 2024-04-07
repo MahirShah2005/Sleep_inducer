@@ -4,7 +4,6 @@
 #include<fstream>
 #include <sstream>
 #include<queue>
-#include<unordered_map>
 #include<chrono>
 #include<thread>
 #include <windows.h>
@@ -18,6 +17,7 @@ using namespace std;
        vector<int> sleeptime;
        int timetofallAsleep;
        bool asleep;
+       string channel;
        
     public:
        
@@ -27,7 +27,8 @@ using namespace std;
               earpodID(id),
               sleeptime(stime),
               timetofallAsleep(Time),
-              asleep(false)   {}
+              asleep(false),
+              channel("")   {}
               
        string inName() const {
            
@@ -57,6 +58,13 @@ using namespace std;
         
              asleep = status;
        }
+       string getchannel() const{
+        return channel;
+       }
+       void setChannel(const string& ch) { 
+        channel = ch;
+    }
+
        
  };      
 class Dorm {
@@ -65,7 +73,6 @@ public:
  
     string name;
     vector<string> channels;
-    unordered_map<string, queue<string>> musicPlaylist;
     vector<Inmate*> inmates;
 
 public:
@@ -80,9 +87,6 @@ public:
         return channels;
     }
 
-    unordered_map<string, queue<string>> getMusicPlaylist() const {
-        return musicPlaylist;
-    }
 
     vector<Inmate*> getInmates() const {
         return inmates;
@@ -90,6 +94,13 @@ public:
 
     void addInmate(Inmate* inmate) {
         inmates.push_back(inmate);
+    }
+     void addChannel(const string& channel) {
+        channels.push_back(channel);
+    }
+
+    const vector<string>& getChannels() const {
+        return channels;
     }
 };
 void music(vector<Dorm>& dormslist);
@@ -102,6 +113,7 @@ int Totaldorms = dorms.size();
        int j=0;
      
        for(int i=0; i<Totaldorms; ++i)  {
+
         int count = inmatesperdorm + (i < remaininginmates ? 1 : 0);
         cout << "Dorm " << i << " will have " << count << " inmates." << endl;
         for (int k = 0; k < count; ++k) {
@@ -111,8 +123,20 @@ int Totaldorms = dorms.size();
        
         }
        }
+}
+       for(int i =0; i<Totaldorms;++i){
+        const vector<string>& channels = dorms[i].getChannels();
+        for (Inmate* inmate : dorms[i].getInmates()) {
+            if (j < TotalInmates) {
+                inmate->setChannel(channels[j % channels.size()]);
+                cout << "Assigned " << inmate->getchannel() << " to Inmate " << inmate->inName() << endl;
+                j++;
+            }
+        }
     }
 }
+    
+
     
 void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms)
 {
@@ -174,7 +198,7 @@ while (getline(file, fline)) {
         {
             cout << channels[i]<<" "<<endl;
         } 
-        
+        newDorm.channels = channels;
         dorms.push_back(newDorm);
     }
      }
@@ -185,17 +209,23 @@ while (getline(file, fline)) {
 }
 void music(vector<Dorm>& dormslist)
 {
+    int inmateindex = 0;
     for(Dorm& dorm : dormslist)
     {
 cout << "Playing sleep inducing music in "<< dorm.getName() <<endl;
 cout << "Number of inmates: " << dorm.getInmates().size() << endl;
 
-for(Inmate* inmate: dorm.getInmates()){
+for(int i=0;i< dorm.getInmates().size();i++){
+    Inmate* inmate = dorm.getInmates()[i];
     if(!inmate -> giveAsleep()){
         cout << "Playing music for inmates " << inmate->inName()<<endl;
+        const vector<string>& channels = dorm.getChannels();
+        inmate->setChannel(channels[inmateindex % channels.size()]);
+        cout << "Assigned  " << inmate->getchannel() << " to Inmate " << inmate->inName() << endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep()));
         inmate->setSleepstatus(true);
         cout<<inmate->inName()<<" fell asleep. Deactivating earpod"<<endl;
+         inmateindex++;
     }
 }
     }
@@ -211,4 +241,3 @@ int main()
     
     return 0;
 }
-
