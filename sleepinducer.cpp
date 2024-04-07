@@ -207,10 +207,10 @@ for(int i=0;i< dorm.getInmates().size();i++){
         cout << "Playing music for inmates " << inmate->inName()<<endl;
         const vector<string>& channels = dorm.getChannels();
         inmate->setChannel(channels[inmateindex % channels.size()]);
-        cout << "Assigned  " << inmate->getchannel() << " to Inmate " << inmate->inName() << endl;
+        cout << "Assigned " << inmate->getchannel() << " to Inmate " << inmate->inName() << endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep()));
         inmate->setSleepstatus(true);
-        cout<<inmate->inName()<<" fell asleep. Deactivating earpod"<<endl;
+        cout<<inmate->inName()<<" fell asleep. After " <<inmate->timetofallAsleep <<" minutes. " <<endl <<"Deactivating earpod."<<endl;
          inmateindex++;
     }
 }
