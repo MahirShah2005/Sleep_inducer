@@ -5,9 +5,11 @@
 #include <sstream>
 #include<queue>
 #include<unordered_map>
-
-
+#include<chrono>
+#include<thread>
+#include <windows.h>
 using namespace std;
+
  class Inmate{
    public:
        
@@ -60,14 +62,14 @@ using namespace std;
 class Dorm {
    
 public:
- Dorm(){}
+ 
     string name;
     vector<string> channels;
     unordered_map<string, queue<string>> musicPlaylist;
     vector<Inmate*> inmates;
 
 public:
-   
+   Dorm(){}
     Dorm(string n, vector<string> channels) : name(n), channels(channels) {}
 
     string getName() const {
@@ -90,7 +92,29 @@ public:
         inmates.push_back(inmate);
     }
 };
-void Read(string name)
+void music(vector<Dorm>& dormslist);
+void assigningInmatestoDorms(vector<Inmate>& inmates,vector<Dorm>& dorms){
+int TotalInmates = inmates.size();
+cout << "Number of Inmates "<< TotalInmates;
+int Totaldorms = dorms.size();
+       int inmatesperdorm = TotalInmates/Totaldorms;
+       int remaininginmates = TotalInmates%Totaldorms;
+       int j=0;
+     
+       for(int i=0; i<Totaldorms; ++i)  {
+        int count = inmatesperdorm + (i < remaininginmates ? 1 : 0);
+        cout << "Dorm " << i << " will have " << count << " inmates." << endl;
+        for (int k = 0; k < count; ++k) {
+            if (j < TotalInmates) {
+                dorms[i].addInmate(&inmates[j++]);
+                cout << "Assigned Inmate " << j << " to Dorm " << i << endl;
+       
+        }
+       }
+    }
+}
+    
+void Read(string name, vector<Inmate>& inmates, vector<Dorm>& dorms)
 {
 ifstream file(name);
 
@@ -98,7 +122,8 @@ if(!file){
     cerr<<"File cannot be opened"<< endl;
     exit(1);
 }
-vector<Inmate> inmatesList;
+
+
 string fline;
 while (getline(file, fline)) {
     istringstream iss(fline);
@@ -126,14 +151,13 @@ while (getline(file, fline)) {
         cout << endl;
         cout << "Time to fall asleep: " << timetofallAsleep << endl;
         Inmate newInmate(name,earpodID,sleeptime,timetofallAsleep);
-        inmatesList.push_back(newInmate);
+        inmates.push_back(newInmate);
        
     }
 
 
     else if(type == "Dorm:")
     {
-        vector<Dorm> dormsList;
         string name;
         int newchannels;
          iss >> name;
@@ -146,23 +170,45 @@ while (getline(file, fline)) {
         {
             iss >> channels[i];
         } 
-       for(int i=0;i<newchannels;i++)
+       for(int i=0;i<newchannels;++i)
         {
             cout << channels[i]<<" ";
         } 
         
-        dormsList.push_back(newDorm);
+        dorms.push_back(newDorm);
     }
      }
+     
+     
+
+     
 }
+void music(vector<Dorm>& dormslist)
+{
+    for(Dorm& dorm : dormslist)
+    {
+cout << "Playing sleep inducing music in "<< dorm.getName() <<endl;
+cout << "Number of inmates: " << dorm.getInmates().size() << endl;
 
-
-
+for(Inmate* inmate: dorm.getInmates()){
+    if(!inmate -> giveAsleep()){
+        cout << "Playing music for inmates" << inmate->inName()<<endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(inmate->getTimeToFallAsleep()));
+        inmate->setSleepstatus(true);
+        cout<<inmate->inName()<<"fell asleep. Deactivating earpod"<<endl;
+    }
+}
+    }
+}
 
 int main()
 {   vector<Inmate> inmates;
-    vector<Dorm> Dorm;
-    Read("input.txt");
+    vector<Dorm> dorms;
+    Read("input1.txt",inmates,dorms);
+    assigningInmatestoDorms(inmates,dorms);
+    music(dorms);
+
+    
     return 0;
 }
 
