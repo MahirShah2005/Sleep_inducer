@@ -1,0 +1,54 @@
+Inmate: Neel 001 8 8 8 8 8 8 8 15
+Inmate: Mukesh 002 9 9 9 9 9 9 9 10
+Inmate: Raj 003 8 8 8 8 8 8 8 5
+Inmate: Ram 004 10 10 10 10 10 10 10 25
+Inmate: Lakshya 005 11 11 11 11 11 11 11 30
+Inmate: Aditya 006 10 10 10 10 10 10 10 6
+Inmate: Riya 007 9 9 9 9 9 9 9 10
+Inmate: Sia 008 8 8 8 8 8 8 8 20
+Inmate: Sneha 009 9 9 9 9 9 9 9 15
+Inmate: Riddhi 010 11 11 11 11 11 11 11 40
+Inmate: Malav 011 7 7 7 7 7 7 7 7
+Inmate: Hitesh 012 8 8 8 8 8 8 8 3
+Inmate: Dev 013 10 10 10 10 10 10 10 22
+Inmate: Jigar 014 11 11 11 11 11 11 11 10
+Inmate: Meena 015 9 9 9 9 9 9 9 30
+Inmate: Muskan 016 11 11 11 11 11 11 11 19
+Inmate: Drishti 017 8 8 8 8 8 8 8 5
+Inmate: Divya 018 9 9 9 9 9 9 9 30
+Inmate: Karan 019 10 10 10 10 10 10 10 45
+Inmate: Isha 020 10 10 10 10 10 10 10 20
+Inmate: Shruti 021 9 9 9 9 9 9 9 15
+Inmate: Deep 022 8 8 8 8 8 8 8 15
+Inmate: Ravi 023 7 7 7 7 7 7 7 10
+Inmate: Hardik 024 8 8 8 8 8 8 8 25
+Inmate: Aashna 025 9 9 9 9 9 9 9 40
+Inmate: Jhanvi 026 11 11 11 11 11 11 11 15
+Inmate: Jiya 027 11 11 11 11 11 11 11 5
+Inmate: Chirag 028 9 9 9 9 9 9 9 55
+Inmate: Kunal 029 10 10 10 10 10 10 10 31
+Inmate: Krisha 030 7 7 7 7 7 7 7 23
+Inmate: Arjun 031 8 8 8 8 8 8 8 19
+Inmate: Aashika 032 10 10 10 10 10 10 10 15
+Inmate: Nia 033 9 9 9 9 9 9 9 5
+Inmate: Dhruv 034 9 9 9 9 9 9 9 12
+Inmate: Jay 035 7 7 7 7 7 7 7 15
+Inmate: Amar 036 8 8 8 8 8 8 8 30
+Inmate: Agasthya 037 7 7 7 7 7 7 7 18
+Inmate: Tahir 038 8 8 8 8 8 8 8 14
+Inmate: Ananya 039 8 8 8 8 8 8 8 9
+Inmate: Aditi 040 10 10 10 10 10 10 10 10
+Inmate: Geet 041 11 11 11 11 11 11 11 17
+Inmate: Shaan 042 6 6 6 6 6 6 6 35
+Inmate: Jash 043 7 7 7 7 7 7 7 20
+Inmate: Jeh 044 9 9 9 9 9 9 9 12
+Inmate: Reva 045 10 10 10 10 10 10 10 45
+Inmate: Varun 046 11 11 11 11 11 11 11 15
+Inmate: Ruchika 047 11 11 11 11 11 11 11 20
+Inmate: Nisha 048 8 8 8 8 8 8 8 40
+Inmate: Tanisha 049 7 7 7 7 7 7 7 32
+Inmate: Unnati 050 9 9 9 9 9 9 9 5
+Dorm: Dorm1 3 Rock Ghazal Salsa
+Dorm: Dorm2 2 Love Pop
+Dorm: Dorm3 3 Rock Classicl Bollywood
+Dorm: Dorm4 2 Hollywood Coke Studio
