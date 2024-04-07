@@ -112,7 +112,7 @@ int Totaldorms = dorms.size();
        int inmatesperdorm = TotalInmates/Totaldorms;    
        int remaininginmates = TotalInmates%Totaldorms;
        int j=0; //for inmate
-     
+
        for(int i=0; i<Totaldorms; ++i)  {
 
         int count = inmatesperdorm + (i < remaininginmates ? 1 : 0);
@@ -120,7 +120,6 @@ int Totaldorms = dorms.size();
         for (int k = 0; k < count; ++k) {
             if (j < TotalInmates) {
                 dorms[i].addInmate(&inmates[j++]);
-                cout << "Assigned Inmate " << j << " to Dorm " << i << endl;
        
         }
        }
@@ -155,7 +154,6 @@ while (getline(file, fline)) {
 
     string type;
     iss >> type;
-    cout << type << endl;
     if (type == "Inmate:") {
         
         string name;
@@ -167,14 +165,6 @@ while (getline(file, fline)) {
             iss >> sleeptime[i];
         }
         iss >> timetofallAsleep;
-        cout << "Name: " << name << endl;
-        cout << "Earpod ID: " << earpodID << endl;
-        cout << "Sleep time: ";
-        for (int i = 0; i < 7; i++) {
-            cout << sleeptime[i] << " ";
-        }
-        cout << endl;
-        cout << "Time to fall asleep: " << timetofallAsleep << endl;
         Inmate newInmate(name,earpodID,sleeptime,timetofallAsleep);
         inmates.push_back(newInmate);
        
@@ -189,15 +179,10 @@ while (getline(file, fline)) {
         iss >> newchannels;
         Dorm newDorm;
         newDorm.name= name;
-        cout << "Name: " << name << endl;
         vector<string>channels(newchannels); 
         for(int i=0;i<newchannels;i++)
         {
             iss >> channels[i];
-        } 
-       for(int i=0;i<newchannels;++i)
-        {
-            cout << channels[i]<<" "<<endl;
         } 
         newDorm.channels = channels;
         dorms.push_back(newDorm);
