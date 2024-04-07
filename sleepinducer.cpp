@@ -204,7 +204,7 @@ for(Inmate* inmate: dorm.getInmates()){
 int main()
 {   vector<Inmate> inmates;
     vector<Dorm> dorms;
-    Read("input1.txt",inmates,dorms);
+    Read("input.txt",inmates,dorms);
     assigningInmatestoDorms(inmates,dorms);
     music(dorms);
 
